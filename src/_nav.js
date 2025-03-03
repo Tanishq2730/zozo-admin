@@ -53,7 +53,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Banner Master',
-        to: '/base/accordion',
+        to: '/',
       },
     ],
   },
