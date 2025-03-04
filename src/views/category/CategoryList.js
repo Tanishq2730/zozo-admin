@@ -3,86 +3,57 @@ import DataTable from 'react-data-table-component'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 import { Modal, Button } from 'react-bootstrap'
 
-const ProductList = () => {
+const CategoryList = () => {
   const [searchText, setSearchText] = useState('')
-  const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const [data, setData] = useState([
     {
       id: 1,
-      productName: 'Product A',
-      shortName: 'ProdA',
-      description: 'This is Product A',
-      url: 'https://example.com/product-a',
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 2,
-      productName: 'Product B',
-      shortName: 'ProdB',
-      description: 'This is Product B',
-      url: 'https://example.com/product-b',
-      image: 'https://picsum.photos/200/300',
+      name: 'Fruits and Vegetables',
+      slug: 'fruits-vegetables',
+      parentCategory: 'Grocery & Staples',
+      description: 'Lorem Ipsum',
+      thumbnail: 'https://picsum.photos/50',
+      imageForCategory: 'https://picsum.photos/50',
+      extraDescription: 'Lorem ipsum dolor sit amet',
     },
   ])
-  const [editItem, setEditItem] = useState(null)
-  const [isEditing, setIsEditing] = useState(false)
 
   const handleSearch = (event) => {
     setSearchText(event.target.value.toLowerCase())
-  }
-
-  const handleEdit = (item) => {
-    setEditItem({ ...item })
-    setIsEditing(true)
   }
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id))
   }
 
-  const updateItem = (updatedItem) => {
-    setData(data.map((item) => (item.id === updatedItem.id ? updatedItem : item)))
-  }
-
   const filteredData = data.filter(
     (item) =>
-      item.productName.toLowerCase().includes(searchText) ||
-      item.shortName.toLowerCase().includes(searchText) ||
+      item.name.toLowerCase().includes(searchText) ||
+      item.slug.toLowerCase().includes(searchText) ||
+      item.parentCategory.toLowerCase().includes(searchText) ||
       item.description.toLowerCase().includes(searchText),
   )
 
   const columns = [
+    { name: 'ID', selector: (row) => row.id, sortable: true },
+    { name: 'Name', selector: (row) => row.name, sortable: true },
+    { name: 'Slug', selector: (row) => row.slug, sortable: true },
+    { name: 'Parent Category', selector: (row) => row.parentCategory },
+    { name: 'Description', selector: (row) => row.description },
     {
-      name: 'Product Name',
-      selector: (row) => row.productName,
-      sortable: true,
+      name: 'Thumbnail',
+      selector: (row) => row.thumbnail,
+      cell: (row) => <img src={row.thumbnail} alt="Thumbnail" width={50} height={50} />,
     },
     {
-      name: 'Short Name',
-      selector: (row) => row.shortName,
-      sortable: true,
+      name: 'Image for Category Page Title',
+      selector: (row) => row.imageForCategory,
+      cell: (row) => <img src={row.imageForCategory} alt="Category" width={50} height={50} />,
     },
-    {
-      name: 'Description',
-      selector: (row) => row.description,
-    },
-    {
-      name: 'URL',
-      selector: (row) => row.url,
-      cell: (row) => (
-        <a href={row.url} target="_blank" rel="noopener noreferrer">
-          Visit
-        </a>
-      ),
-    },
-    {
-      name: 'Images',
-      selector: (row) => row.image,
-      cell: (row) => <img src={row.image} alt={row.productName} width={50} height={50} />,
-    },
+    { name: 'Extra Description', selector: (row) => row.extraDescription },
     {
       name: 'Actions',
       cell: (row) => (
@@ -106,7 +77,7 @@ const ProductList = () => {
       <div className="maincard mb-4">
         <div className="card">
           <div className="p-4">
-            <h2 className="text-xl font-bold mb-3">Product List</h2>
+            <h2 className="text-xl font-bold mb-3">Category List</h2>
             <input
               type="text"
               placeholder="Search..."
@@ -128,4 +99,4 @@ const ProductList = () => {
   )
 }
 
-export default ProductList
+export default CategoryList

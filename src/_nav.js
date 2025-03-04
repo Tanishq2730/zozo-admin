@@ -1,45 +1,55 @@
 import React from 'react'
-import CIcon from '@coreui/icons-react'
-import {
-  cilBell,
-  cilCalculator,
-  cilChartPie,
-  cilCursor,
-  cilDescription,
-  cilDrop,
-  cilExternalLink,
-  cilNotes,
-  cilPencil,
-  cilPuzzle,
-  cilSpeedometer,
-  cilStar,
-} from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
+import { BiSolidCategoryAlt } from 'react-icons/bi'
+import { AiFillDashboard } from "react-icons/ai";
+import { FaUser } from "react-icons/fa";
+import { PiFlagBannerFill } from "react-icons/pi";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { RiCoupon3Fill } from "react-icons/ri";
+import { MdWorkHistory } from "react-icons/md";
+import { IoNotifications } from "react-icons/io5";
+import { MdInventory } from "react-icons/md";
+import { MdAccountCircle } from "react-icons/md";
 
 const _nav = [
   {
     component: CNavItem,
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
+    icon: <AiFillDashboard />,
   },
-  // {
-  //   component: CNavTitle,
-  //   name: 'Theme',
-  // },
+  {
+    component: CNavGroup,
+    name: 'Category',
+    to: '/theme/colors',
+    icon: <BiSolidCategoryAlt customClassName="nav-icon"/>,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Add Category',
+        to: '/category',
+      },
+      {
+        component: CNavItem,
+        name: 'Category List',
+        to: '/category-list',
+      },
+    ],
+  },
   {
     component: CNavGroup,
     name: 'User',
     to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    icon: <FaUser />,
     items: [
       {
         component: CNavItem,
-        name: 'User Role',
+        name: 'All User',
+        to: '/',
+      },
+      {
+        component: CNavItem,
+        name: 'Add User',
         to: '/',
       },
     ],
@@ -48,12 +58,12 @@ const _nav = [
     component: CNavGroup,
     name: 'Banner',
     to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    icon: <PiFlagBannerFill />,
     items: [
       {
         component: CNavItem,
         name: 'Banner Master',
-        to: '/',
+        to: '/banner',
       },
     ],
   },
@@ -61,7 +71,7 @@ const _nav = [
     component: CNavGroup,
     name: 'Product',
     to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    icon: <MdOutlineProductionQuantityLimits />,
     items: [
       {
         component: CNavItem,
@@ -79,7 +89,7 @@ const _nav = [
     component: CNavGroup,
     name: 'Coupon',
     to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    icon: <RiCoupon3Fill />,
     items: [
       {
         component: CNavItem,
@@ -92,7 +102,7 @@ const _nav = [
     component: CNavGroup,
     name: 'History',
     to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    icon: <MdWorkHistory />,
     items: [
       {
         component: CNavItem,
@@ -114,19 +124,19 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Notifications',
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    icon: <IoNotifications />,
     to: '/',
   },
   {
     component: CNavItem,
     name: 'Inventory',
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    icon: <MdInventory />,
     to: '/',
   },
   {
     component: CNavItem,
     name: 'Account',
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    icon: <MdAccountCircle />,
     to: '/',
   },
   // {
