@@ -119,7 +119,7 @@ const Order = () => {
 
   return (
     <>
-      <div className="maincard mb-4">
+      <div className="maincard my-4">
         <div className="card">
           <div className="p-4">
             <div className="row">
@@ -128,7 +128,7 @@ const Order = () => {
               </div>
               <div className="col-md-6">
                 <div className="orderbtn d-flex gap-2 justify-content-end">
-                  <button className="btn btn-success text-white" onClick={() => setVisible(true)}>
+                  <button className="btn btn-info text-white" onClick={() => setVisible(true)}>
                     <FaPlus className="me-1" /> Add
                   </button>
                   {/* <button className="btn btn-primary">
