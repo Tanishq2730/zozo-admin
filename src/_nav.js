@@ -94,7 +94,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Add Coupon',
-        to: '/',
+        to: '/coupon',
       },
     ],
   },
@@ -107,7 +107,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Order',
-        to: '/',
+        to: '/order',
       },
       {
         component: CNavItem,

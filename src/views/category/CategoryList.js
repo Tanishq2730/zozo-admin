@@ -74,7 +74,7 @@ const CategoryList = () => {
 
   return (
     <>
-      <div className="maincard mb-4">
+      <div className="maincard mb-4 mt-4">
         <div className="card">
           <div className="p-4">
             <h2 className="text-xl font-bold mb-3">Category List</h2>

@@ -57,7 +57,7 @@ export default function Category() {
                     id={`fileInput${index}`}
                     onChange={(e) => handleImageChange(e, setImage)}
                   />
-                  <label htmlFor={`fileInput${index}`} className="btn btn-primary">Browse</label>
+                  <label htmlFor={`fileInput${index}`} className="btn btn-info text-white">Browse</label>
                   {image && (
                     <div className="position-relative border rounded" style={{ width: '64px', height: '64px' }}>
                       <img src={image} alt="Preview" className="img-fluid rounded" />

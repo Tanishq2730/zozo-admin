@@ -108,7 +108,7 @@ const Addproduct = () => {
           
         </div>
       </div>
-      <button type="submit" className="btn btn-primary my-3">Submit</button>
+      <button type="submit" className="btn btn-info text-white my-3">Submit</button>
     </>
   );
 };
