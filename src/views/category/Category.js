@@ -22,7 +22,7 @@ export default function Category() {
         {/* General Info */}
         <div className="col-md-6">
           <div className="card p-3 shadow-sm">
-            <h2 className="h5 mb-3">General Info</h2>
+            <h2 className="h5 mb-3">Add category</h2>
             <div className="mb-3">
               <label className="form-label">Name*</label>
               <input type="text" className="form-control" placeholder="Category Name" />

@@ -44,13 +44,8 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: 'All User',
-        to: '/',
-      },
-      {
-        component: CNavItem,
-        name: 'Add User',
-        to: '/',
+        name: 'User',
+        to: '/user',
       },
     ],
   },
@@ -112,12 +107,12 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Transaction',
-        to: '/',
+        to: '/transaction',
       },
       {
         component: CNavItem,
         name: 'Deliver',
-        to: '/',
+        to: '/deliver',
       },
     ],
   },
@@ -131,7 +126,7 @@ const _nav = [
     component: CNavItem,
     name: 'Inventory',
     icon: <MdInventory />,
-    to: '/',
+    to: '/inventory',
   },
   {
     component: CNavItem,

@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form'
 import DataTable from 'react-data-table-component'
 import { FaTrash } from 'react-icons/fa'
 
-const CouponMaster = () => {
+const Coupon = () => {
   const { register, handleSubmit, reset } = useForm()
   const [coupons, setCoupons] = useState([])
+  const [filterCategory, setFilterCategory] = useState('')
 
   const onSubmit = (data) => {
     setCoupons([...coupons, { id: coupons.length + 1, ...data }])
@@ -16,10 +17,15 @@ const CouponMaster = () => {
     setCoupons(coupons.filter((coupon) => coupon.id !== id))
   }
 
+  const filteredCoupons = filterCategory
+    ? coupons.filter((coupon) => coupon.category === filterCategory)
+    : coupons
+
   const columns = [
     { name: 'Coupon Code', selector: (row) => row.couponCode, sortable: true },
     { name: 'Discount (%)', selector: (row) => row.discount, sortable: true },
     { name: 'Expiration Date', selector: (row) => row.expiryDate, sortable: true },
+    { name: 'Category', selector: (row) => row.category, sortable: true },
     {
       name: 'Actions',
       cell: (row) => (
@@ -68,6 +74,17 @@ const CouponMaster = () => {
                   />
                 </div>
               </div>
+              <div className="col-md-6">
+                <div className="mb-3">
+                  <label className="form-label">Category</label>
+                  <select {...register('category', { required: true })} className="form-control">
+                    <option value="">Select Category</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Grocery">Grocery</option>
+                  </select>
+                </div>
+              </div>
               <div className="col-md-3 mt-auto mb-3">
                 <button type="submit" className="btn btn-info text-white w-100">
                   Add Coupon
@@ -81,11 +98,20 @@ const CouponMaster = () => {
       <div className="maincard">
         <div className="card p-4">
           <h2 className="mb-4">Coupons List</h2>
-          <DataTable columns={columns} data={coupons} pagination />
+          <div className="mb-3">
+            <label className="form-label">Filter by Category</label>
+            <select className="form-control" onChange={(e) => setFilterCategory(e.target.value)}>
+              <option value="">All</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Grocery">Grocery</option>
+            </select>
+          </div>
+          <DataTable columns={columns} data={filteredCoupons} pagination />
         </div>
       </div>
     </div>
   )
 }
 
-export default CouponMaster
+export default Coupon

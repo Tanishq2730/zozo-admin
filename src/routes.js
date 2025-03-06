@@ -10,6 +10,10 @@ const CategoryList = React.lazy(() => import('./views/category/CategoryList'))
 const Banner = React.lazy(() => import('./views/banner/Banner'))
 const Order = React.lazy(() => import('./views/order/Order'))
 const Coupons = React.lazy(() => import('./views/coupon/Coupons'))
+const User = React.lazy(() => import('./views/user/User'))
+const Transaction = React.lazy(() => import('./views/transaction/Transaction'))
+const Deliver = React.lazy(() => import('./views/deliver/Deliver'))
+const Inventory = React.lazy(() => import('./views/inventory/Inventory'))
 
 // Base
 const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
@@ -64,7 +68,11 @@ const routes = [
   { path: '/add-product', name: 'Add Product', element: Addproduct },
   { path: '/product-list', name: 'Add Product', element: ProductList },
   { path: '/coupon', name: 'Add Product', element: Coupons },
+  { path: '/transaction', name: 'Add Product', element: Transaction },
+  { path: '/deliver', name: 'Add Product', element: Deliver },
   { path: '/banner', name: 'Add Product', element: Banner },
+  { path: '/inventory', name: 'Add Product', element: Inventory },
+  { path: '/user', name: 'Add Product', element: User },
   { path: '/order', name: 'Add Product', element: Order },
   { path: '/category', name: 'Add Product', element: Category },
   { path: '/category-list', name: 'Add Product', element: CategoryList },

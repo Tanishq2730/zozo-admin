@@ -60,7 +60,7 @@ export default function Banner() {
   ];
 
   return (
-    <div className="container bannercard d-flex flex-column align-items-center mt-4">
+    <div className="container bannercard d-flex flex-column align-items-center my-4">
       <div className="card shadow-lg p-4 w-100">
         <div className="row">
           <div className="col-md-6">
@@ -102,14 +102,13 @@ export default function Banner() {
                       style={{
                         width: "100px",
                         height: "100px",
-                        objectFit: "cover",
+                        objectFit: "contain",
                         borderRadius: "5px",
                       }}
                     />
                     <button
-                      className="btn btn-danger btn-sm position-absolute top-0 end-0"
+                      className="btn imgpreivewcross btn-danger btn-sm position-absolute top-0 end-0"
                       onClick={() => handleDeletePreviewImage(image)}
-                      style={{ borderRadius: "50%", padding: "5px" }}
                     >
                       &times;
                     </button>
