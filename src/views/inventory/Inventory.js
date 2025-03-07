@@ -10,6 +10,7 @@ const Inventory = () => {
       image: 'https://picsum.photos/200/300',
       price: '₹500',
       category: 'Category A',
+      quantity:"4"
     },
     {
       id: 2,
@@ -17,6 +18,7 @@ const Inventory = () => {
       image: 'https://picsum.photos/200/300',
       price: '₹800',
       category: 'Category B',
+      quantity:"4"
     },
   ])
 
@@ -50,6 +52,11 @@ const Inventory = () => {
     {
       name: 'Product Category',
       selector: (row) => row.category,
+      sortable: true,
+    },
+    {
+      name: 'Quantity',
+      selector: (row) => row.quantity,
       sortable: true,
     },
     {

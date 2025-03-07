@@ -68,7 +68,7 @@ const Deliver = () => {
             </span>
           </div>
         </div>
-        <div className="card">
+        <div className="card p-0">
           <DataTable columns={columns} data={filteredData} pagination highlightOnHover responsive />
         </div>
       </div>

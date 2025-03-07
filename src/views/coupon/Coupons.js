@@ -66,6 +66,27 @@ const Coupon = () => {
               </div>
               <div className="col-md-6">
                 <div className="mb-3">
+                  <label className="form-label">Set Usage Limit (Days)</label>
+                  <input
+                    type="number"
+                    {...register('discount', { required: true })}
+                    className="form-control"
+                    placeholder="Enter discount percentage"
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="mb-3">
+                  <label className="form-label">Start Date</label>
+                  <input
+                    type="date"
+                    {...register('expiryDate', { required: true })}
+                    className="form-control"
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="mb-3">
                   <label className="form-label">Expiration Date</label>
                   <input
                     type="date"
@@ -77,6 +98,17 @@ const Coupon = () => {
               <div className="col-md-6">
                 <div className="mb-3">
                   <label className="form-label">Category</label>
+                  <select {...register('category', { required: true })} className="form-control">
+                    <option value="">Select Category</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Grocery">Grocery</option>
+                  </select>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="mb-3">
+                  <label className="form-label">Sub Category</label>
                   <select {...register('category', { required: true })} className="form-control">
                     <option value="">Select Category</option>
                     <option value="Electronics">Electronics</option>
@@ -98,14 +130,21 @@ const Coupon = () => {
       <div className="maincard">
         <div className="card p-4">
           <h2 className="mb-4">Coupons List</h2>
-          <div className="mb-3">
-            <label className="form-label">Filter by Category</label>
-            <select className="form-control" onChange={(e) => setFilterCategory(e.target.value)}>
-              <option value="">All</option>
-              <option value="Electronics">Electronics</option>
-              <option value="Fashion">Fashion</option>
-              <option value="Grocery">Grocery</option>
-            </select>
+          <div className="row">
+            <div className="col-md-3">
+              <div className="mb-3">
+                <label className="form-label">Filter by Category</label>
+                <select
+                  className="form-control"
+                  onChange={(e) => setFilterCategory(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Fashion">Fashion</option>
+                  <option value="Grocery">Grocery</option>
+                </select>
+              </div>
+            </div>
           </div>
           <DataTable columns={columns} data={filteredCoupons} pagination />
         </div>
