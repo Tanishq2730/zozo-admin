@@ -8,34 +8,85 @@ const Inventory = () => {
       id: 1,
       name: 'Product 1',
       image: 'https://picsum.photos/200/300',
-      price: '₹500',
+      price: 500,
+      discountPrice: 450,
       category: 'Category A',
-      quantity:"4"
+      quantity: 4,
+      sku: 'SKU1234',
+      status: 'Active',
+      supplier: 'Supplier A',
     },
     {
       id: 2,
       name: 'Product 2',
       image: 'https://picsum.photos/200/300',
-      price: '₹800',
+      price: 800,
+      discountPrice: 700,
       category: 'Category B',
-      quantity:"4"
+      quantity: 4,
+      sku: 'SKU1235',
+      status: 'Inactive',
+      supplier: 'Supplier B',
     },
   ])
 
   const [searchText, setSearchText] = useState('')
 
+  // ✅ Handle Delete
   const handleDelete = (id) => {
     setProducts(products.filter((product) => product.id !== id))
   }
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchText.toLowerCase()),
+  // ✅ Filter Data based on search
+  const filteredProducts = products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(searchText.toLowerCase()) ||
+      product.sku.toLowerCase().includes(searchText.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchText.toLowerCase()) ||
+      product.status.toLowerCase().includes(searchText.toLowerCase()) ||
+      product.supplier.toLowerCase().includes(searchText.toLowerCase())
   )
 
+  // ✅ Data Table Columns
   const columns = [
     {
       name: 'Product Name',
       selector: (row) => row.name,
+      sortable: true,
+    },
+    {
+      name: 'SKU',
+      selector: (row) => row.sku,
+      sortable: true,
+    },
+    {
+      name: 'Category',
+      selector: (row) => row.category,
+      sortable: true,
+    },
+    {
+      name: 'Supplier',
+      selector: (row) => row.supplier,
+      sortable: true,
+    },
+    {
+      name: 'Price',
+      selector: (row) => `₹${row.price}`,
+      sortable: true,
+    },
+    {
+      name: 'Discount Price',
+      selector: (row) => `₹${row.discountPrice}`,
+      sortable: true,
+    },
+    {
+      name: 'Quantity',
+      selector: (row) => row.quantity,
+      sortable: true,
+    },
+    {
+      name: 'Status',
+      selector: (row) => row.status,
       sortable: true,
     },
     {
@@ -45,24 +96,12 @@ const Inventory = () => {
       ),
     },
     {
-      name: 'Product Price',
-      selector: (row) => row.price,
-      sortable: true,
-    },
-    {
-      name: 'Product Category',
-      selector: (row) => row.category,
-      sortable: true,
-    },
-    {
-      name: 'Quantity',
-      selector: (row) => row.quantity,
-      sortable: true,
-    },
-    {
       name: 'Actions',
       cell: (row) => (
-        <button className="text-red-500 btn text-danger btn-group" onClick={() => handleDelete(row.id)}>
+        <button
+          className="btn btn-danger"
+          onClick={() => handleDelete(row.id)}
+        >
           <FaTrash />
         </button>
       ),
@@ -73,15 +112,17 @@ const Inventory = () => {
     <div className="container mt-4">
       <div className="maincard">
         <div className="card shadow p-4">
-          <h2 className="mb-3 text-left">Inventory Management</h2>
+          <h2 className="mb-3">Inventory Management</h2>
+          {/* ✅ Search Bar */}
           <input
             type="text"
             className="form-control mb-3"
-            placeholder="Search by Product Name"
+            placeholder="Search by Product Name, SKU, Category, etc."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            style={{ width: '22%' }}
+            style={{ width: '30%' }}
           />
+          {/* ✅ Data Table */}
           <DataTable
             columns={columns}
             data={filteredProducts}

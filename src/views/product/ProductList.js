@@ -17,6 +17,8 @@ const ProductList = () => {
       description: 'This is Product A',
       url: 'https://example.com/product-a',
       image: 'https://picsum.photos/200/300',
+      price: '420Rs',
+      discount:'320Rs'
     },
     {
       id: 2,
@@ -25,6 +27,8 @@ const ProductList = () => {
       description: 'This is Product B',
       url: 'https://example.com/product-b',
       image: 'https://picsum.photos/200/300',
+      price: '420Rs',
+      discount:'320Rs'
     },
   ])
   const [editItem, setEditItem] = useState(null)
@@ -68,6 +72,14 @@ const ProductList = () => {
     {
       name: 'Description',
       selector: (row) => row.description,
+    },
+    {
+      name: 'Price',
+      selector: (row) => row.price,
+    },
+    {
+      name: 'Discount',
+      selector: (row) => row.discount,
     },
     {
       name: 'URL',
